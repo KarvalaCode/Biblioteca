@@ -1,31 +1,29 @@
 package net.Karvala;
 
-public class Main extends Libro{
+public class Main {
 
     public static void main(String[] args) {
 
-        Libro l1 = new Libro("Titulo del Libro", "Autores del libro", 1982, "Editorial", "Salón");
-        Libro l2 = new Libro("Titulo", "Autores", 1995, "Editorial", "Habitación");
-        biblioteca.add(l1);
-        biblioteca.add(l2);
+        Libros l1 = new Libros("Titulo del Libro", "Autores del libro", "Salón");
+        Libros l2 = new Libros("Titulo", "Autores", "Habitación");
+        Libros l3 = new Libros("Hola", "Yo", "Habitación2");
+        Libros l4 = new Libros("Mi vida", "Sara", "Habitación");
 
-        //Añadir libro a la biblioteca (POST)
-        Libro l3 = postLibro();
-        biblioteca.add(l3);
-        System.out.println(biblioteca);
+        GestionLibros.biblioteca.add(l1);
+        GestionLibros.biblioteca.add(l2);
+        GestionLibros.biblioteca.add(l3);
+        GestionLibros.biblioteca.add(l4);
 
-        //Imprimir libro por pantalla (GET)
-        getLibro(l1);
+        //GestionLibros.postLibro();
 
-        //Modificar libro (PUT)
-        l1.putLibro("Titulo del Libro", "Autoras del libro", 1982, "Editorial", "Salón");
-        System.out.println(biblioteca);
+        GestionLibros.buscar();
 
-        //Eliminar libro (DELETE)
-        deleteLibro(l1);
-        System.out.println(biblioteca);
+        //GestionLibros.deleteLibro(3);
 
+        GestionLibros.putLibro();
 
+        GestionLibros.getBiblioteca(GestionLibros.biblioteca);
 
     }
+
 }
