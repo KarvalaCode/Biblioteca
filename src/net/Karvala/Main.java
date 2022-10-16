@@ -16,13 +16,13 @@ public class Main {
 
         //GestionLibros.postLibro();
 
-        GestionLibros.buscar();
+        //GestionLibros.buscar();
 
         //GestionLibros.deleteLibro(3);
 
-        GestionLibros.putLibro();
+        //GestionLibros.putLibro();
 
-        GestionLibros.getBiblioteca(GestionLibros.biblioteca);
+        GestionLibros.getBiblioteca();
 
     }
 

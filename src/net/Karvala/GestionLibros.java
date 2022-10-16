@@ -15,7 +15,7 @@ class GestionLibros {
     }
 
     //Imprimir todos los libros por pantalla (GET ON)
-    public static void getBiblioteca(ArrayList<Libros> biblioteca) {
+    public static void getBiblioteca() {
         for (Libros libro : biblioteca) {
             System.out.println(libro);
         }
@@ -114,8 +114,6 @@ class GestionLibros {
                 System.out.println("Número incorrecto. Debe introducir un número entre el 1 y el 4");
         }
 
-
-
         if (null != busqueda) {
             System.out.println("Libro encontrado.");
         } else {
@@ -123,7 +121,8 @@ class GestionLibros {
             buscar();
         }
     }
-    // Editar un atributo copncreto del libro (PUT)
+
+    // Editar un atributo concreto del libro (PUT)
     public static void putLibro() {
         Scanner scPut = new Scanner(System.in);
         System.out.println("Id del libro a editar:");
