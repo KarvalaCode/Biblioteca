@@ -4,10 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Libros l1 = new Libros("Titulo del Libro", "Autores del libro", "Salón");
-        Libros l2 = new Libros("Titulo", "Autores", "Habitación");
-        Libros l3 = new Libros("Hola", "Yo", "Habitación2");
-        Libros l4 = new Libros("Mi vida", "Sara", "Habitación");
+        Libro l1 = new Libro("Titulo del Libro", "Autores del libro", "Salón");
+        Libro l2 = new Libro("Titulo", "Autores", "Habitación");
+        Libro l3 = new Libro("Hola", "Yo", "Habitación2");
+        Libro l4 = new Libro("Mi vida", "Sara", "Habitación");
 
         GestionLibros.biblioteca.add(l1);
         GestionLibros.biblioteca.add(l2);
@@ -20,9 +20,12 @@ public class Main {
 
         //GestionLibros.deleteLibro(3);
 
-        //GestionLibros.putLibro();
+        GestionLibros.putLibro();
 
-        GestionLibros.getBiblioteca();
+        //GestionLibros.getBiblioteca();
+
+        //GestionLibros.buscarLibro();
+
 
     }
 

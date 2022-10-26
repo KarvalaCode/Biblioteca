@@ -1,6 +1,6 @@
 package net.Karvala;
 
-public class Libros {
+public class Libro {
 
     //Atributos
     private int id;
@@ -11,9 +11,9 @@ public class Libros {
     private static int contId = 0;
 
     //Constructores (vacío y con atributos)
-    public Libros() {}
+    public Libro() {}
 
-    public Libros(String titulo, String autoria, String estanteria) {
+    public Libro(String titulo, String autoria, String estanteria) {
         this.id = contId++;
         this.titulo = titulo;
         this.autoria = autoria;
