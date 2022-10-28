@@ -1,18 +1,18 @@
 package net.Karvala;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Busqueda {
 
     //Búsqueda
-    static Libro busqueda = null;
-
-    //clase enum con las diferentes opciones de los inputs
-
-
+    static Optional<Libro> busqueda = Optional.empty();
+    static List<Libro>  buscarVarios = new ArrayList<>();
 
     public static Opcion menu() {
-
         try {
             System.out.println("Buscar un libro: ¿Por dónde quieres empezar?");
             System.out.println("1: Id");
@@ -27,16 +27,14 @@ public class Busqueda {
             return opcion;
         } catch (NullPointerException e) {
             System.out.println("Número incorrecto. Debe introducir un número entre el 1 y el 4");
-            menu();
             return Opcion.VACIO;
         } catch (Exception ex) {
             System.out.println("Ha ocurrido un error. Vuelva a intentarlo.");
-            menu();
             return Opcion.VACIO;
         }
     }
 
-    public static Libro buscar(Opcion opcion) {
+    public static List<Libro> buscar(Opcion opcion) {
         try {
             switch (opcion) {
                 case ID:
@@ -45,11 +43,8 @@ public class Busqueda {
                     int buscarId = sc1.nextInt();
                     sc1.nextLine();
 
-                    for (Libro libro : GestionLibros.biblioteca) {
-                        if (buscarId == libro.getId()) {
-                            busqueda = libro;
-                        }
-                    }
+                    busqueda = GestionLibros.biblioteca.stream().filter(libro -> buscarId == libro.getId()).findFirst();
+                    if (busqueda.isPresent()){buscarVarios.add(busqueda.get());}
                     break;
 
                 case TITULO:
@@ -57,11 +52,8 @@ public class Busqueda {
                     System.out.println("Título del libro a buscar:");
                     String buscarTitulo = sc2.nextLine();
 
-                    for (Libro libro : GestionLibros.biblioteca) {
-                        if (buscarTitulo.equals(libro.getTitlulo())) {
-                            busqueda = libro;
-                        }
-                    }
+                    buscarVarios = GestionLibros.biblioteca.stream().filter(libro -> buscarTitulo.equals(libro.getTitlulo())).collect(Collectors.toList());
+                    busqueda = Optional.ofNullable(buscarVarios.get(0));
                     break;
 
                 case AUTORIA:
@@ -69,11 +61,8 @@ public class Busqueda {
                     System.out.println("Autoría del libro a buscar:");
                     String buscarAutoria = sc3.nextLine();
 
-                    for (Libro libro : GestionLibros.biblioteca) {
-                        if (buscarAutoria.equals(libro.getAutoria())) {
-                            busqueda = libro;
-                        }
-                    }
+                    buscarVarios = GestionLibros.biblioteca.stream().filter(libro -> buscarAutoria.equals(libro.getAutoria())).collect(Collectors.toList());
+                    busqueda = Optional.ofNullable(buscarVarios.get(0));
                     break;
 
                 case ESTANTERIA:
@@ -81,37 +70,31 @@ public class Busqueda {
                     System.out.println("Estantería del libro a buscar:");
                     String buscarEstanteria = sc4.nextLine();
 
-                    for (Libro libro : GestionLibros.biblioteca) {
-                        if (buscarEstanteria.equals(libro.getEstanteria())) {
-                            busqueda = libro;
-                        }
-                    }
+                    buscarVarios = GestionLibros.biblioteca.stream().filter(libro -> buscarEstanteria.equals(libro.getEstanteria())).collect(Collectors.toList());
+                    busqueda = Optional.ofNullable(buscarVarios.get(0));
                     break;
 
                 default:
                     System.out.println("Número incorrecto. Debe introducir un número entre el 1 y el 4");
-
-            System.out.println("El Libro que ha buscado es: " + Busqueda.busqueda);
-        }
-            return busqueda;
-        } catch(NullPointerException e) {
+            }
+        }catch (NullPointerException e){
             System.out.println("Número incorrecto. Debe introducir un número entre el 1 y el 4");
-            menu();
-            return busqueda;
+            return buscarVarios;
         } catch(Exception ex) {
-            System.out.println("Ha ocurrido un error. Vuelva a intentarlo.");
-            menu();
-            return busqueda;
+            System.out.println("Ha ocurrido un error. Compruebe que lo ha escrito corerctamente. Vuelva a intentarlo.");
+            return buscarVarios;
         }
 
+        System.out.println("El Libro que ha buscado es: " + buscarVarios);
+        return buscarVarios;
     }
 
     public static void mensaje() {
 
-        if (null != busqueda) {
+        if (busqueda.isPresent()) {
             System.out.println("Libro encontrado.");
         } else {
-            System.out.println("Libro no encontrado. Inténtalo de nuevo");
+            System.out.println("Libro no encontrado. Inténtalo de nuevo.");
         }
     }
 

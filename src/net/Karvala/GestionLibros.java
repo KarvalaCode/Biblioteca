@@ -1,7 +1,7 @@
 package net.Karvala;
 
 import java.util.ArrayList;
-import java.util.Optional;
+import java.util.List;
 import java.util.Scanner;
 
 class GestionLibros {
@@ -9,15 +9,14 @@ class GestionLibros {
     static ArrayList<Libro> biblioteca = new ArrayList<>();
 
     //Buscar un libro segun la opcion
-    public static Libro buscarLibro(){
+    public static List<Libro> buscarLibro(){
         Opcion elegirBuscar = Busqueda.menu();
-        System.out.println(elegirBuscar);
         Busqueda.buscar(elegirBuscar);
         Busqueda.mensaje();
-        return Busqueda.busqueda;
+        return Busqueda.buscarVarios;
     }
 
-    //Métodos (Get / Post / Put / Delete)
+    //Métodos (Get / Get ON / Post / Delete)
 
     //Imprimir libro por pantalla (GET)
     public void getLibro(Libro libro) {

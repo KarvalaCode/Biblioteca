@@ -20,11 +20,11 @@ public class Main {
 
         //GestionLibros.deleteLibro(3);
 
-        GestionLibros.putLibro();
+        //GestionLibros.putLibro();
 
         //GestionLibros.getBiblioteca();
 
-        //GestionLibros.buscarLibro();
+        GestionLibros.buscarLibro();
 
 
     }
