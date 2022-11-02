@@ -13,7 +13,7 @@ class GestionLibros {
         Opcion elegirBuscar = Busqueda.menu();
         Busqueda.buscar(elegirBuscar);
         Busqueda.mensaje();
-        return Busqueda.buscarVarios;
+        return Busqueda.busqueda;
     }
 
     //Métodos (Get / Get ON / Post / Delete)

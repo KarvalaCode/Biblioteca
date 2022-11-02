@@ -2,15 +2,13 @@ package net.Karvala;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Busqueda {
 
     //Búsqueda
-    static Optional<Libro> busqueda = Optional.empty();
-    static List<Libro>  buscarVarios = new ArrayList<>();
+    static List<Libro>  busqueda = new ArrayList<>();
 
     public static Opcion menu() {
         try {
@@ -43,8 +41,7 @@ public class Busqueda {
                     int buscarId = sc1.nextInt();
                     sc1.nextLine();
 
-                    busqueda = GestionLibros.biblioteca.stream().filter(libro -> buscarId == libro.getId()).findFirst();
-                    if (busqueda.isPresent()){buscarVarios.add(busqueda.get());}
+                    busqueda = GestionLibros.biblioteca.stream().filter(libro -> buscarId == libro.getId()).collect(Collectors.toList());
                     break;
 
                 case TITULO:
@@ -52,8 +49,7 @@ public class Busqueda {
                     System.out.println("Título del libro a buscar:");
                     String buscarTitulo = sc2.nextLine();
 
-                    buscarVarios = GestionLibros.biblioteca.stream().filter(libro -> buscarTitulo.equals(libro.getTitlulo())).collect(Collectors.toList());
-                    busqueda = Optional.ofNullable(buscarVarios.get(0));
+                    busqueda = GestionLibros.biblioteca.stream().filter(libro -> buscarTitulo.equals(libro.getTitlulo())).collect(Collectors.toList());
                     break;
 
                 case AUTORIA:
@@ -61,8 +57,7 @@ public class Busqueda {
                     System.out.println("Autoría del libro a buscar:");
                     String buscarAutoria = sc3.nextLine();
 
-                    buscarVarios = GestionLibros.biblioteca.stream().filter(libro -> buscarAutoria.equals(libro.getAutoria())).collect(Collectors.toList());
-                    busqueda = Optional.ofNullable(buscarVarios.get(0));
+                    busqueda = GestionLibros.biblioteca.stream().filter(libro -> buscarAutoria.equals(libro.getAutoria())).collect(Collectors.toList());
                     break;
 
                 case ESTANTERIA:
@@ -70,8 +65,7 @@ public class Busqueda {
                     System.out.println("Estantería del libro a buscar:");
                     String buscarEstanteria = sc4.nextLine();
 
-                    buscarVarios = GestionLibros.biblioteca.stream().filter(libro -> buscarEstanteria.equals(libro.getEstanteria())).collect(Collectors.toList());
-                    busqueda = Optional.ofNullable(buscarVarios.get(0));
+                    busqueda = GestionLibros.biblioteca.stream().filter(libro -> buscarEstanteria.equals(libro.getEstanteria())).collect(Collectors.toList());
                     break;
 
                 default:
@@ -79,22 +73,22 @@ public class Busqueda {
             }
         }catch (NullPointerException e){
             System.out.println("Número incorrecto. Debe introducir un número entre el 1 y el 4");
-            return buscarVarios;
+            return busqueda;
         } catch(Exception ex) {
             System.out.println("Ha ocurrido un error. Compruebe que lo ha escrito corerctamente. Vuelva a intentarlo.");
-            return buscarVarios;
+            return busqueda;
         }
 
-        System.out.println("El Libro que ha buscado es: " + buscarVarios);
-        return buscarVarios;
+        System.out.println("El Libro que ha buscado es: " + busqueda);
+        return busqueda;
     }
 
     public static void mensaje() {
 
-        if (busqueda.isPresent()) {
-            System.out.println("Libro encontrado.");
+        if (busqueda.isEmpty()) {
+            System.out.println("Libro no encontrado. Compruebe que lo ha escrito correctamente e inténtalo de nuevo.");
         } else {
-            System.out.println("Libro no encontrado. Inténtalo de nuevo.");
+            System.out.println("Libro encontrado.");
         }
     }
 
