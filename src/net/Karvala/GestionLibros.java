@@ -3,28 +3,28 @@ package net.Karvala;
 import java.util.List;
 import java.util.Scanner;
 
-class GestionLibros {
+class GestionLibros implements GestionPublicaDeLibros {
 
     private List<Libro> biblioteca;
     //Creamos los objetos de busqieda, input y autput y put
-    Busqueda busqueda  = new Busqueda(biblioteca);
+    private Busqueda busqueda;
     Input in = new Input();
     Output out = new Output();
-    Put put = new Put();
-
-    //constructor
-    public GestionLibros(){}
+    private Put put; //TODO probar  = new Put(biblioteca); y no instanciar en el constructor
 
     public GestionLibros(List<Libro> biblioteca){
        this.biblioteca = getBiblioteca();
+       this.put = new Put(biblioteca);
+       this.busqueda = new Busqueda(biblioteca);
         }
 
     //Buscar un libro segun la opcion
     public List<Libro> buscarLibro(){
         Opcion elegirBuscar = in.menu();
-        busqueda.buscar(elegirBuscar);
+        List<Libro> listaBuscada = busqueda.buscar(elegirBuscar);
+        System.out.println("El/los Libro/s que ha buscado es/son: " + listaBuscada);
         out.mensaje();
-        return busqueda.listaBuscada;
+        return listaBuscada;
     }
 
     //Métodos (Get / Get ON / Post / Delete)
@@ -37,15 +37,17 @@ class GestionLibros {
     //Imprimir todos los libros por pantalla (GET ON)
 
     public List<Libro> getBiblioteca() {
+        biblioteca.forEach(System.out::println);
         for (Libro libro : biblioteca) {
             System.out.println(libro);
         }
-            return biblioteca;
+
+        return biblioteca;
 
     }
 
         //Introducir libros nuevos en la biblioteca (POST)
-        public Libro postLibro () {
+        public Libro postLibro (Libro newLibro) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Nuevo libro");
 
@@ -66,7 +68,7 @@ class GestionLibros {
         }
 
         // Editar un atributo concreto del libro (PUT)
-        public void putLibro () {
+        public void putLibro (int id, Libro updatedLibro) {
             Opcion elegirEditar = in.menuEditar();
             System.out.println(elegirEditar);
             put.put(elegirEditar);
@@ -77,4 +79,23 @@ class GestionLibros {
             biblioteca.removeIf(libro -> libro.getId() == id);
         }
 
+    @Override
+    public Libro get(int id) {
+        return null;
+    }
+
+    @Override
+    public Libro post(Libro libro) {
+        return null;
+    }
+
+    @Override
+    public Libro put(int id, Libro libro) {
+        return null;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return false;
+    }
 }
