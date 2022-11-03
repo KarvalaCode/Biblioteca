@@ -7,32 +7,23 @@ import java.util.stream.Collectors;
 
 public class Busqueda {
 
-    //Búsqueda
-    static List<Libro>  busqueda = new ArrayList<>();
+    GestionLibros gestorBuscar = new GestionLibros();
 
-    public static Opcion menu() {
-        try {
-            System.out.println("Buscar un libro: ¿Por dónde quieres empezar?");
-            System.out.println("1: Id");
-            System.out.println("2: Título");
-            System.out.println("3: Autoría");
-            System.out.println("4: Estantería");
-            //System.out.println("5: Terminar la búsqueda");
-            Scanner scan = new Scanner(System.in);
-            int input = scan.nextInt();
-            Opcion opcion = Opcion.convert(input);
-            System.out.println("La opcion escogida es: " + opcion);
-            return opcion;
-        } catch (NullPointerException e) {
-            System.out.println("Número incorrecto. Debe introducir un número entre el 1 y el 4");
-            return Opcion.VACIO;
-        } catch (Exception ex) {
-            System.out.println("Ha ocurrido un error. Vuelva a intentarlo.");
-            return Opcion.VACIO;
-        }
+    //Constructores
+    public Busqueda(){}
+
+    public Busqueda(List<Libro> biblioBuscar){
+        this.biblioBuscar = biblioBuscar;
     }
 
-    public static List<Libro> buscar(Opcion opcion) {
+    //Creamos una lista para guardar los resusltados de la busqueda
+    List<Libro> biblioBuscar= gestorBuscar.getBiblioteca();
+
+    //Búsqueda
+    List<Libro> listaBuscada = new ArrayList<>();
+
+
+    public List<Libro> buscar(Opcion opcion) {
         try {
             switch (opcion) {
                 case ID:
@@ -41,7 +32,7 @@ public class Busqueda {
                     int buscarId = sc1.nextInt();
                     sc1.nextLine();
 
-                    busqueda = GestionLibros.biblioteca.stream().filter(libro -> buscarId == libro.getId()).collect(Collectors.toList());
+                    listaBuscada = biblioBuscar.stream().filter(libro -> buscarId == libro.getId()).collect(Collectors.toList());
                     break;
 
                 case TITULO:
@@ -49,7 +40,7 @@ public class Busqueda {
                     System.out.println("Título del libro a buscar:");
                     String buscarTitulo = sc2.nextLine();
 
-                    busqueda = GestionLibros.biblioteca.stream().filter(libro -> buscarTitulo.equals(libro.getTitlulo())).collect(Collectors.toList());
+                    listaBuscada = biblioBuscar.stream().filter(libro -> buscarTitulo.equals(libro.getTitlulo())).collect(Collectors.toList());
                     break;
 
                 case AUTORIA:
@@ -57,7 +48,7 @@ public class Busqueda {
                     System.out.println("Autoría del libro a buscar:");
                     String buscarAutoria = sc3.nextLine();
 
-                    busqueda = GestionLibros.biblioteca.stream().filter(libro -> buscarAutoria.equals(libro.getAutoria())).collect(Collectors.toList());
+                    listaBuscada = biblioBuscar.stream().filter(libro -> buscarAutoria.equals(libro.getAutoria())).collect(Collectors.toList());
                     break;
 
                 case ESTANTERIA:
@@ -65,7 +56,7 @@ public class Busqueda {
                     System.out.println("Estantería del libro a buscar:");
                     String buscarEstanteria = sc4.nextLine();
 
-                    busqueda = GestionLibros.biblioteca.stream().filter(libro -> buscarEstanteria.equals(libro.getEstanteria())).collect(Collectors.toList());
+                    listaBuscada = biblioBuscar.stream().filter(libro -> buscarEstanteria.equals(libro.getEstanteria())).collect(Collectors.toList());
                     break;
 
                 default:
@@ -73,24 +64,16 @@ public class Busqueda {
             }
         }catch (NullPointerException e){
             System.out.println("Número incorrecto. Debe introducir un número entre el 1 y el 4");
-            return busqueda;
+            return listaBuscada;
         } catch(Exception ex) {
             System.out.println("Ha ocurrido un error. Compruebe que lo ha escrito corerctamente. Vuelva a intentarlo.");
-            return busqueda;
+            return listaBuscada;
         }
 
-        System.out.println("El Libro que ha buscado es: " + busqueda);
-        return busqueda;
+        System.out.println("El Libro que ha buscado es: " + listaBuscada);
+        return listaBuscada;
     }
 
-    public static void mensaje() {
-
-        if (busqueda.isEmpty()) {
-            System.out.println("Libro no encontrado. Compruebe que lo ha escrito correctamente e inténtalo de nuevo.");
-        } else {
-            System.out.println("Libro encontrado.");
-        }
-    }
 
 
 

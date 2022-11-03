@@ -1,30 +1,38 @@
 package net.Karvala;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
+        //Creamos una biblioteca en formato lista de objetos Libro
+        List<Libro> biblio = new ArrayList<>();
 
+        //Creamos un objeto BIBLIOTECA, que es una gestor de libros
+        GestionLibros gestorLibros = new GestionLibros(biblio);
+
+        //Creamos varios libros y los añadimos a la biblioteca para probar todos los métodos. En la app final los libros deberan añadirse mediante el método post.
         Libro l1 = new Libro("Titulo del Libro", "Autores del libro", "Salón");
         Libro l2 = new Libro("Titulo", "Autores", "Habitación");
         Libro l3 = new Libro("Hola", "Yo", "Habitación2");
         Libro l4 = new Libro("Mi vida", "Sara", "Habitación");
 
-        GestionLibros.biblioteca.add(l1);
-        GestionLibros.biblioteca.add(l2);
-        GestionLibros.biblioteca.add(l3);
-        GestionLibros.biblioteca.add(l4);
+        biblio.add(l1);
+        biblio.add(l2);
+        biblio.add(l3);
+        biblio.add(l4);
 
-        //GestionLibros.postLibro();
+        //gestorLibros.postLibro();
 
-        //GestionLibros.buscar();
+        //gestorLibros.buscarLibro();
 
-        //GestionLibros.deleteLibro(3);
+        //gestorLibros.deleteLibro(3);
 
-        //GestionLibros.putLibro();
+        //gestorLibros.putLibro();
 
-        //GestionLibros.getBiblioteca();
+        //gestorLibros.getBiblioteca();
 
-        GestionLibros.buscarLibro();
 
 
     }
