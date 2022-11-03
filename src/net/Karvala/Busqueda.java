@@ -75,7 +75,7 @@ public class Busqueda {
             System.out.println("Número incorrecto. Debe introducir un número entre el 1 y el 4");
             return busqueda;
         } catch(Exception ex) {
-            System.out.println("Ha ocurrido un error. Compruebe que lo ha escrito corerctamente. Vuelva a intentarlo.");
+            System.out.println("Ha ocurrido un error. Compruebe que lo ha escrito correctamente. Vuelva a intentarlo.");
             return busqueda;
         }
 
