@@ -3,17 +3,17 @@ package net.Karvala;
 import java.util.List;
 import java.util.Scanner;
 
-public class Put extends GestionLibros{
+public class Put {
 
     //Creamos un objeto gestor y una lista para guardar los resultados de la edición
-    GestionLibros gestorBuscar = new GestionLibros();
-    List<Libro> biblioPut = gestorBuscar.getBiblioteca();
+    private List<Libro> biblioPut;
 
     //Objeto INput
     Input in = new Input();
 
     //constructor
-    public Put(){
+    public Put(List<Libro> biblioPut){
+        this.biblioPut = biblioPut;
     }
 
     public void put(Opcion opcion) {
