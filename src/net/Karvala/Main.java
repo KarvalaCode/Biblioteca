@@ -2,15 +2,13 @@ package net.Karvala;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Main {
 
     public static void main(String[] args) {
-        //Creamos una biblioteca en formato lista de objetos Libro
+        //Creamos una biblioteca en formato lista de objetos Libro.
         List<Libro> biblio = new ArrayList<>();
-
-        //Creamos un objeto BIBLIOTECA, que es una gestor de libros
-        GestionLibros gestorLibros = new GestionLibros(biblio);
 
         //Creamos varios libros y los añadimos a la biblioteca para probar todos los métodos. En la app final los libros deberan añadirse mediante el método post.
         Libro l1 = new Libro("Titulo del Libro", "Autores del libro", "Salón");
@@ -23,8 +21,13 @@ public class Main {
         biblio.add(l3);
         biblio.add(l4);
 
-        //gestorLibros.postLibro();
+        System.out.println(biblio);
 
+        //Creamos un objeto BIBLIOTECA, que es una gestor de libros.
+        GestionLibros gestorLibros = new GestionLibros(biblio);
+        System.out.println(buscarLibroPorId(gestorLibros));
+
+        gestorLibros.post(Post.postLibro);
         //gestorLibros.buscarLibro();
 
         //gestorLibros.deleteLibro(3);
@@ -35,6 +38,11 @@ public class Main {
 
 
 
+    }
+
+    private static String buscarLibroPorId(GestionLibros gestorLibros) {
+        return gestorLibros.get(1).map(libro -> "El libro encontrado es " + libro.getTitlulo())
+                .orElse("Libro no encontrado");
     }
 
 }
