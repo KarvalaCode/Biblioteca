@@ -1,29 +1,32 @@
 package net.Karvala;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
-class GestionLibros implements GestionPublicaDeLibros {
+class GestionLibros { //implements GestionPublicaDeLibros
 
     private List<Libro> biblioteca;
-    //Creamos los objetos de busqieda, input y autput y put
+    //Creamos los objetos de busqueda, input y put
     private Busqueda busqueda;
     Input in = new Input();
-    Output out = new Output();
+    //Output out = new Output();
+    private Post post;
     private Put put; //TODO probar  = new Put(biblioteca); y no instanciar en el constructor
 
     public GestionLibros(List<Libro> biblioteca){
-       this.biblioteca = getBiblioteca();
+       this.biblioteca = biblioteca;
        this.put = new Put(biblioteca);
        this.busqueda = new Busqueda(biblioteca);
+       this.post = new Post(biblioteca);
         }
 
     //Buscar un libro segun la opcion
     public List<Libro> buscarLibro(){
         Opcion elegirBuscar = in.menu();
         List<Libro> listaBuscada = busqueda.buscar(elegirBuscar);
-        System.out.println("El/los Libro/s que ha buscado es/son: " + listaBuscada);
-        out.mensaje();
+        System.out.println("El/los Libro/s que has buscado es/son: " + listaBuscada);
+        //out.mensaje();
         return listaBuscada;
     }
 
@@ -41,31 +44,12 @@ class GestionLibros implements GestionPublicaDeLibros {
         for (Libro libro : biblioteca) {
             System.out.println(libro);
         }
-
         return biblioteca;
 
     }
 
         //Introducir libros nuevos en la biblioteca (POST)
-        public Libro postLibro (Libro newLibro) {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Nuevo libro");
 
-            System.out.println("Título:");
-            String titulo = sc.nextLine();
-
-            System.out.println("Autoría:");
-            String autoria = sc.nextLine();
-
-            System.out.println("Estantería:");
-            String estanteria = sc.nextLine();
-
-            Libro l = new Libro(titulo, autoria, estanteria);
-            biblioteca.add(l);
-
-            System.out.println("Su libro con id " + l.getId() + " se ha añadido correctamente a la biblioteca");
-            return l;
-        }
 
         // Editar un atributo concreto del libro (PUT)
         public void putLibro (int id, Libro updatedLibro) {
@@ -79,23 +63,26 @@ class GestionLibros implements GestionPublicaDeLibros {
             biblioteca.removeIf(libro -> libro.getId() == id);
         }
 
-    @Override
-    public Libro get(int id) {
-        return null;
+    //@Override
+    public Optional<Libro> get(int id) {
+        return biblioteca.stream().filter(libro -> libro.getId() == id).findFirst();
+        //Libro libro = biblioteca.get(id);
+    //return libro;
     }
-
-    @Override
+//
+//    @Override
     public Libro post(Libro libro) {
-        return null;
+        biblioteca.add(libro);
+        return libro;
     }
-
-    @Override
-    public Libro put(int id, Libro libro) {
-        return null;
-    }
-
-    @Override
-    public boolean delete(int id) {
-        return false;
-    }
+//
+//    @Override
+//    public Libro put(int id, Libro libro) {
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean delete(int id) {
+//        return false;
+//    }
 }

@@ -2,7 +2,7 @@ package net.Karvala;
 
 import java.util.Scanner;
 
-public class Input extends Busqueda {
+public class Input {
 
     //Scanner para buscar un libro
     public Opcion menu() {
@@ -30,7 +30,7 @@ public class Input extends Busqueda {
     //Scanner para elegir la ID y posterioprmente editar ese libro
     public int elegirID() {
         Scanner scPut = new Scanner(System.in);
-        System.out.println("Id del libro a editar:");
+        System.out.println("Id del libro:");
         int put = scPut.nextInt();
         scPut.nextLine();
         return put;
