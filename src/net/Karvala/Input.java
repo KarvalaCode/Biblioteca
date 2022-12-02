@@ -7,7 +7,7 @@ public class Input {
     //Scanner para buscar un libro
     public Opcion menu() {
         try {
-            System.out.println("Buscar un libro: ¿Por dónde quieres empezar?");
+            System.out.println("¿Qué quieres editar?");
             System.out.println("1: Id");
             System.out.println("2: Título");
             System.out.println("3: Autoría");
