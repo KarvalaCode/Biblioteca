@@ -21,22 +21,32 @@ public class Main {
         biblio.add(l3);
         biblio.add(l4);
 
-        System.out.println(biblio);
+        //System.out.println(biblio);
 
         //Creamos un objeto BIBLIOTECA, que es una gestor de libros.
         GestionLibros gestorLibros = new GestionLibros(biblio);
-        System.out.println(buscarLibroPorId(gestorLibros));
 
-        gestorLibros.post(Post.postLibro);
-        //gestorLibros.buscarLibro();
+        //System.out.println(buscarLibroPorId(gestorLibros));
 
-        //gestorLibros.deleteLibro(3);
+        //System.out.println(gestorLibros.buscarLibro(Opcion.TITULO));
 
-        //gestorLibros.putLibro();
+        //gestorLibros.getLibro(l3);
 
         //gestorLibros.getBiblioteca();
 
+        System.out.println(biblio);
 
+
+       // gestorLibros.put(2, gestorLibros.put.putLibro(2, gestorLibros.in.menu()));
+
+        //System.out.println(gestorLibros.delete(3));
+        //gestorLibros.buscarLibro(Opcion.ID);
+
+
+        gestorLibros.post(gestorLibros.post.postLibro());
+
+
+        System.out.println(biblio);
 
     }
 
