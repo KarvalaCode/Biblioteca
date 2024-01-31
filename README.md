@@ -24,7 +24,7 @@ La estructura del proyecto se organiza de la siguiente manera:
   - `LibroControllerTest.java`: Pruebas de integración utilizando [TestRestTemplate](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/web/client/TestRestTemplate.html).
   - `LibroControllerUnitTest.java`: Pruebas unitarias utilizando [Mockito](https://site.mockito.org/) y [MockMvc](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#testing-mockmvc).
 
-## Frameworks y Bibliotecas Utilizadas
+## Dependencias Utilizadas
 - [Spring Boot](https://spring.io/projects/spring-boot): Framework de desarrollo para aplicaciones Java basado en Spring. [Documentación Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/index.html)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa): Biblioteca de Spring para simplificar la implementación de repositorios de datos basados en JPA. [Documentación Spring Data JPA](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference)
 - [Spring Web](https://spring.io/projects/spring-framework): Módulo de Spring para el desarrollo de aplicaciones web y la creación de servicios REST. [Documentación Spring Web](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
@@ -98,7 +98,7 @@ The project structure is organized as follows:
   - `LibroControllerUnitTest.java`: Unit tests using [Mockito](https://site.mockito.org/) and [MockMvc](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#testing-mockmvc).
 - **README.md**: Project documentation (this file).
 
-## Used Frameworks and Libraries
+## Used Dependencies
 - [Spring Boot](https://spring.io/projects/spring-boot): Development framework for Java applications based on Spring. [Spring Boot Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/index.html)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa): Spring library to simplify the implementation of JPA-based data repositories. [Spring Data JPA Documentation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference)
 - [Spring Web](https://spring.io/projects/spring-framework): Spring module for web application development and creating RESTful services. [Spring Web Documentation](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
