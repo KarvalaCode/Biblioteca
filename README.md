@@ -67,7 +67,7 @@ La API proporciona los siguientes **endpoints**:
     - Este endpoint elimina todos los libros de la biblioteca.
 
 ## Autor
-Este proyecto fue desarrollado por [Karvala](https://github.com/Karvala). 
+Este proyecto fue desarrollado por [Karvala](https://github.com/KarvalaCode). 
 
 ---
 
@@ -133,4 +133,4 @@ The API provides the following **endpoints**:
     - This endpoint deletes all books from the library.
 
 ## Author
-This project was developed by [Karvala](https://github.com/Karvala).
+This project was developed by [Karvala](https://github.com/KarvalaCode).
