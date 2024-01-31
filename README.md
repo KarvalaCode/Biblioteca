@@ -54,9 +54,7 @@ La API proporciona los siguientes **endpoints**:
 
 - **Actualizar un libro existente**:
   - PUT `/api/libros`
-    - Este endpoint permite actualizar los datos de un libro existente. Se debe proporcionar un objeto JSON con los datos actualizados del libro en el cuerpo de la solicitud
-
-.
+    - Este endpoint permite actualizar los datos de un libro existente. Se debe proporcionar un objeto JSON con los datos actualizados del libro en el cuerpo de la solicitud.
 
 - **Eliminar un libro por ID**:
   - DELETE `/api/libros/{id}`
